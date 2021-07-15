@@ -17,8 +17,8 @@ const Footer = ({ infoLandingPage }) => {
             </div>
             <div className="w-full md:w-1/3 flex items-center jutify-center md:justify-end">
                 <div className="flex w-full space-x-4 justify-center">
-                    <a target="_blank" href={socialNetworkLinkedin} className="text-primary hover:underline">Linkedin</a> 
-                    <a target="_blank" href={socialNetworkGithub} className="text-primary hover:underline">Github</a>
+                    <a target="_blank" rel="noreferrer" href={socialNetworkLinkedin} className="text-primary hover:underline">Linkedin</a> 
+                    <a target="_blank" rel="noreferrer" href={socialNetworkGithub} className="text-primary hover:underline">Github</a>
                 </div>
             </div>
         </div>

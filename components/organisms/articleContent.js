@@ -16,7 +16,7 @@ const ArticleContent = ({ article }) => {
             <div className="mb-2 md:hidden"><DateLine date={publishDate} /></div>
             <Tags tags={article.contentfulMetadata.tags} />
             <div className="mb-5 rounded border">
-                <Image src={article.cover.url} width={800} height={800} title={article.cover.title} />
+                <Image src={article.cover.url} width={800} height={800} alt={article.cover.title} />
             </div>
             <div className="text-justify">{documentToReactComponents(article.content ? article.content.json : article.description.json)}</div>
         </div>

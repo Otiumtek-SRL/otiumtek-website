@@ -14,7 +14,7 @@ const WorkContent = ({ work }) => {
             <DateRibbon date={publishDate} />
             <div className="mb-2 md:hidden"><DateLine date={publishDate} /></div>
             <div className="mb-5 rounded border">
-                <Image src={work.cover.url} width={800} height={800} title={work.cover.title} />
+                <Image src={work.cover.url} width={800} height={800} alt={work.cover.title} />
             </div>
             <div>{documentToReactComponents(work.content ? work.content.json : work.description.json)}</div>
         </div>
