@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import Breadcrumb from '../organisms/breadcrumb'
 import Search from '../organisms/search'
-import Pagination from '../organisms/pagination'
+import Pagination from '../molecules/pagination'
 import SectionHeader from '../molecules/sectionHeader'
 import ArticleCard from '../molecules/articleCard'
 
-const BlogTemplate = ({ articles, infoLandingPage }) => {
+const BlogTemplate = ({ articles, infoLandingPage, currentPage, totalPage }) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
@@ -27,14 +27,14 @@ const BlogTemplate = ({ articles, infoLandingPage }) => {
                 </div>
             </div>  
             <div className="pagination">
-                <Pagination />
+                <Pagination currentPage={currentPage} totalPage={totalPage} type="blog" />
             </div>
         </div>
     )
 }
 
 BlogTemplate.propTypes = {
-    articles: PropTypes.object.isRequired,
+    articles: PropTypes.array.isRequired,
     infoLandingPage: PropTypes.object.isRequired,
 }
 

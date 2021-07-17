@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import Breadcrumb from '../organisms/breadcrumb'
 import Search from '../organisms/search'
-import Pagination from '../organisms/pagination'
+import Pagination from '../molecules/pagination'
 import SectionHeader from '../molecules/sectionHeader'
 import WorkCard from '../molecules/workCard'
 
-const PortfolioTemplate = ({ works, infoLandingPage }) => {
+const PortfolioTemplate = ({ works, infoLandingPage, currentPage, totalPage }) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
             <div className="header">
-                <Breadcrumb page="blog" />
+                <Breadcrumb page="portfolio" />
                 <div className="mb-10">
                     <SectionHeader 
                         title={infoLandingPage.sectionPortafolioTitle}
@@ -27,7 +27,7 @@ const PortfolioTemplate = ({ works, infoLandingPage }) => {
                 </div>
             </div>  
             <div className="pagination">
-                <Pagination />
+                <Pagination currentPage={currentPage} totalPage={totalPage} type="portfolio" />
             </div>
         </div>
     )

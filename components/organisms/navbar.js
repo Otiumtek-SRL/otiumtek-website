@@ -48,7 +48,7 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                                 <a href="#services" className="hover:text-primary hover:underline">{t('navbar-services')}</a>
                                 <a href="#solutions" className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
                                 <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
-                                {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
+                                {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                             </Scrollspy>
                         </nav> : 
                         <nav className="flex space-x-4">
@@ -64,7 +64,7 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                             <Link href="/#blog">
                             <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
                             </Link>
-                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
+                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </nav>
                     }
                 </div>

@@ -1,5 +1,7 @@
 {
     "site": {
+        "pagination-prev": "Anterior",
+        "pagination-next": "Siguiente",
         "chat-message": "Hola! 👋🏼 \n\nque podemos hacer por usted?",
         "chat-time-replies": "Normalmente responde en un día",
         "chat-text-button": "Enviar",

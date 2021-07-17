@@ -22,7 +22,7 @@ const Breadcrumb = ({ page, postTitle }) => {
                 {page && !postTitle && 
                     <>
                         <span>&gt;&gt;</span>
-                        <li className="text-sm hover:text-primary hover:underline">{pages[page].text}</li>
+                        <li className="text-sm">{pages[page].text}</li>
                     </>
                 }
                 {postTitle &&

@@ -1,5 +1,7 @@
 {
     "site": {
+        "pagination-prev": "Previuos",
+        "pagination-next": "Next",
         "chat-message": "Hello! 👋🏼 \n\nWhat can we do for you?",
         "chat-time-replies": "Typically replies within a day",
         "chat-text-button": "Send",

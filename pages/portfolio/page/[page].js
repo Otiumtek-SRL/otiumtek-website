@@ -2,12 +2,15 @@ import PortfolioTemplate from '../../../components/templates/portfolio'
 import LandingLayout from '../../../components/layouts/landing'
 import ContentfulApi from '../../../utils/ContentfulApi'
 import Config from '../../../utils/Config'
+import Helper from '../../../utils/Helper'
 
-const PortfolioPage = ({ works, infoLandingPage }) => {
+const PortfolioPage = ({ works, infoLandingPage, currentPage, totalPage }) => {
     return (
         <PortfolioTemplate
             infoLandingPage={infoLandingPage}
             works={works}
+            currentPage={currentPage}
+            totalPage={totalPage}
         />
     )
 }
@@ -37,6 +40,7 @@ export async function getStaticProps({ locale, params }) {
 
     const infoLandingPage = await ContentfulApi.getInfoPage(locale)
     const data = await ContentfulApi.getWorkPagination(locale, (params.page - 1) * Config.pagination.pageSize, Config.pagination.pageSize)
+    let totalPage = Helper.calculatePages(data.total, Config.pagination.pageSize)
 
     return {
       props: {
@@ -45,6 +49,8 @@ export async function getStaticProps({ locale, params }) {
         infoLandingPage,
         title: infoLandingPage.sectionPortafolioTitle,
         description: "",
+        currentPage: parseInt(params.page),
+        totalPage,
         works: data.items
       }
     }
