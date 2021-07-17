@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Header from '../organisms/header'
 import Service from '../organisms/serviceLanding'
-import Porfolio from '../organisms/portfolioLanding'
+import Portfolio from '../organisms/portfolioLanding'
 import Blog from '../organisms/blogLanding'
 
 const LandingTemplate = ({ infoLandingPage, services, works, articles }) => {
@@ -24,7 +24,7 @@ const LandingTemplate = ({ infoLandingPage, services, works, articles }) => {
                 description={sectionServiceDescription} 
                 services={services} 
             />
-            <Porfolio 
+            <Portfolio 
                 title={sectionPortafolioTitle} 
                 description={sectionPortafolioDescription}
                 works={works} 

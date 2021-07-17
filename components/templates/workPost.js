@@ -8,7 +8,7 @@ const WorkDetailTemplate = ({work, relatedPosts}) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
-            <Breadcrumb page="portfolio" postTitle={work.title} />
+            <Breadcrumb page="portfolio"  postTitle={work.title} />
             <div className="md:hidden mb-10">
                 <Search />
             </div>

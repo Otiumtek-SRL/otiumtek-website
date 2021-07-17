@@ -14,7 +14,7 @@ const PortolioLanding = ({ title, description, works}) => {
                 description={description} 
                 button={{
                     text: t('link-portfolio'),
-                    link: '',
+                    link: '/portfolio/page/1',
                     isLink: true
                 }} 
             />

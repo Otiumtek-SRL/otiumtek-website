@@ -18,9 +18,9 @@ function MyApp({ Component, pageProps }) {
       )}
       <div className="fixed bottom-0 right-0">
         <WhatsAppWidget 
-          textReplyTime={pageProps.messages['site']['chat-time-replies']} 
-          message={pageProps.messages['site']['chat-message']}
-          sendButton={pageProps.messages['site']['chat-text-button']}
+          // textReplyTime={pageProps.messages['site']['chat-time-replies']} 
+          // message={pageProps.messages['site']['chat-message']}
+          // sendButton={pageProps.messages['site']['chat-text-button']}
           companyName="Otiumtek" 
           phoneNumber='59895159228' 
         />

@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 
 const WorkCard = ({title, description, cover, slug, index}) => {
 
+    const { locale } = useRouter()
     const t = useTranslations('site')
 
     return (
@@ -16,7 +18,7 @@ const WorkCard = ({title, description, cover, slug, index}) => {
             <div className="w-full md:w-1/2 flex justify-center flex-col items-start px-10">
                 <h3 className="text-lg font-bold uppercase mb-1">{title}</h3>
                 <div>{description}</div> 
-                <Link href={`/portfolio/${slug}`}>
+                <Link href={`/portfolio/${slug}`} locale={locale}>
                     <a className="mb-2 text-primary hover:underline mt-2">{t('go-to')} {title}</a>
                 </Link>
             </div>

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import DateRibbon from '../molecules/dateRibbon'
 import DateLine from '../atoms/dateLine'
 import Tags from '../atoms/tags'

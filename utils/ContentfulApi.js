@@ -81,31 +81,6 @@ export default class ContentfulApi {
     return response.data.postCollection.items
   }
 
-  static async getServicesPagination(locale) {
-    // Build the query
-    const query = `
-      {
-        postCollection(where: {type: "Service"}, order: sorted_ASC) {
-          skip
-          limit
-          total
-          items {
-            title
-            sorted
-            description {
-              json
-            }
-            
-          }
-        }
-      }
-    `
-
-    // Call out to the API
-    const response = await this.callContentful(query)
-    return response.data.postCollection
-  }
-
   static async getWorkLanding(locale, limit = 4) {
     // Build the query
     const query = `
@@ -130,17 +105,23 @@ export default class ContentfulApi {
     return response.data.postCollection.items
   }
 
-  static async getWorkPagination(locale) {
+  static async getWorkPagination(locale, skip, limit) {
     // Build the query
     const query = `
       {
-        postCollection(where: {type: "Work"}, order: sorted_ASC, limit: ) {
+        postCollection(locale: "${locale}" skip: ${skip} limit: ${limit} where: {type: "Work"} order: sorted_ASC) {
           skip
           limit
           total
           items {
-            title
-            sorted
+            title,
+            description
+            cover {
+              title
+              url
+            }
+            slug
+            link
           }
         }
       }
@@ -148,11 +129,7 @@ export default class ContentfulApi {
 
     // Call out to the API
     const response = await this.callContentful(query)
-    const posts = response.data.postCollection
-      ? response.data.postCollection
-      : 0
-
-    return posts
+    return response.data.postCollection
   }
 
   static async getSlugs(type) {
@@ -176,7 +153,7 @@ export default class ContentfulApi {
     // Build the query
     const query = `
       {
-        postCollection(where: {type: "Article"}, order: sorted_ASC, locale: "${locale}", limit: ${limit}) {
+        postCollection(where: {type: "Article"}, locale: "${locale}", limit: ${limit}, order: publishDate_DESC) {
           items {
             title,
             description
@@ -198,16 +175,17 @@ export default class ContentfulApi {
     return response.data.postCollection.items
   }
 
-  static async getArticlesPagination(locale) {
+  static async getArticlesPagination(locale, skip, limit) {
     // Build the query
     const query = `
       {
-        postCollection(where: {type: "Article"}) {
+        postCollection(locale: "${locale}" skip: ${skip} limit: ${limit} where: {type: "Article"} order: publishDate_DESC) {
           skip
           limit
           total
           items {
             title
+            slug
             description
             publishDate
             cover {
@@ -221,11 +199,7 @@ export default class ContentfulApi {
 
     // Call out to the API
     const response = await this.callContentful(query)
-    const posts = response.data.postCollection
-      ? response.data.postCollection
-      : 0
-
-    return posts
+    return response.data.postCollection
   }
 
   static async getPostsRelated(type, tags, slugNoInclude) {
@@ -287,5 +261,20 @@ export default class ContentfulApi {
       : null
 
     return post
+  }
+
+  static async getTotalPosts(type) {
+    // Build the query
+    const query = `
+    {
+      postCollection(where: {type: "${type}" }) {
+        total
+      }
+    }  
+    `
+
+    // Call out to the API
+    const response = await this.callContentful(query)
+    return response.data.postCollection.total
   }
 }

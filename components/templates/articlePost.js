@@ -24,7 +24,6 @@ const ArticleDetailTemplate = ({article, relatedPosts}) => {
                 </div>
             </div>
         </div>
-        
     ) 
 }
 

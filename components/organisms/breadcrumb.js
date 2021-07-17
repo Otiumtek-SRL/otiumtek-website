@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
 
 const Breadcrumb = ({ page, postTitle }) => {
 
+    const { locale } = useRouter()
     const t = useTranslations('site')
 
     const pages = {
@@ -15,18 +17,20 @@ const Breadcrumb = ({ page, postTitle }) => {
         <div className="mb-10 md:mb-20 flex justify-center">
             <ol className="flex space-x-2 items-center">
                 <li className="text-sm hover:text-primary hover:underline">
-                    <Link href="/"><a>{t('navbar-home')}</a></Link>
+                    <Link href="/" locale={locale} ><a>{t('navbar-home')}</a></Link>
                 </li>
-                {page && 
+                {page && !postTitle && 
                     <>
                         <span>&gt;&gt;</span>
-                        <li className="text-sm hover:text-primary hover:underline">
-                            <Link href={pages[page].link}><a>{pages[page].text}</a></Link>
-                        </li>
+                        <li className="text-sm hover:text-primary hover:underline">{pages[page].text}</li>
                     </>
                 }
                 {postTitle &&
                     <>
+                        <span>&gt;&gt;</span>
+                        <li className="text-sm hover:text-primary hover:underline">
+                            <Link href={pages[page].link} locale={locale}><a>{pages[page].text}</a></Link>
+                        </li>
                         <span>&gt;&gt;</span>
                         <li className="font-bold text-primary">{postTitle}</li>
                     </>
@@ -37,7 +41,7 @@ const Breadcrumb = ({ page, postTitle }) => {
 }
 
 Breadcrumb.propTypes = {
-    postTitle: PropTypes.any.isRequired,
+    //postTitle: PropTypes.any.isRequired,
     page: PropTypes.any.isRequired,
 }
 
