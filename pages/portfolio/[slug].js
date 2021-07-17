@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import LandingLayout from '../../components/layouts/landing'
 import WorkTemplate from '../../components/templates/workPost'
 import ContentfulApi from '../../utils/ContentfulApi'
@@ -11,9 +10,14 @@ const WorkDetailPage = ({ work, relatedPosts }) => {
     )
 }
 
-export async function getStaticPaths({ locale }) {
-    let paths = await ContentfulApi.getSlugs("Work")
-    paths = paths.map(item => ({params: { slug: item } }))
+export async function getStaticPaths({ locales }) {
+    let slugs = await ContentfulApi.getSlugs("Work")
+    let paths = []
+    for (let locale of locales) {
+        for(let slug of slugs) {
+            paths = paths.concat([{params: { slug }, locale }])
+        }
+    }
     return {
         paths,
         fallback: false
@@ -28,7 +32,9 @@ export async function getStaticProps({ locale, params }) {
 
     return {
       props: {
-        ...await serverSideTranslations(locale, ['common']),
+        messages: require(`../../locales/${locale}.json`),
+        title: work.title,
+        description: work.description,
         isLanding: false,
         infoLandingPage,
         work,

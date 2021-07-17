@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const DateRibbon = ({ date }) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     return (
         <div className="hidden md:block bg-primary absolute text-white p-2 text-center -left-10 top-1">

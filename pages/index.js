@@ -1,4 +1,3 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import LandingLayout from '../components/layouts/landing'
 import LandingTemplate from '../components/templates/landing'
 import ContentfulApi from '../utils/ContentfulApi'
@@ -18,7 +17,9 @@ export async function getStaticProps({ locale }) {
   
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      messages: require(`../locales/${locale}.json`),
+      title: "Otiumtek",
+      description: infoLandingPage.slogan,
       isLanding: true,
       infoLandingPage,
       services,

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Numeric from '../atoms/numeric'
 
 const ServiceCard = ({title, description, sorted}) => {
@@ -8,7 +7,7 @@ const ServiceCard = ({title, description, sorted}) => {
             <div className="flex items-center flex-col p-5 relative">
                 <Numeric number={sorted} />
                 <h3 className="text-lg text-center font-bold uppercase mb-3">{title}</h3>
-                <div className="text-justify">{documentToReactComponents(description.json)}</div>
+                <div className="text-justify">{description}</div>
             </div>
         </div>
     )

@@ -1,8 +1,8 @@
 module.exports = {
   reactStrictMode: true,
   i18n: {
-    defaultLocale: 'es',
     locales: ['en', 'es'],
+    defaultLocale: 'en',
   },
   images: {
     domains: ['images.ctfassets.net'],

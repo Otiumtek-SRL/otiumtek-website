@@ -70,10 +70,7 @@ export default class ContentfulApi {
           items {
             title
             sorted
-            description {
-              json
-            }
-            
+            description
           }
         }
       }
@@ -116,9 +113,7 @@ export default class ContentfulApi {
         postCollection(where: {type: "Work"}, order: sorted_ASC, locale: "${locale}", limit: ${limit}) {
           items {
             title,
-            description {
-              json
-            }
+            description
             cover {
               title
               url
@@ -146,10 +141,6 @@ export default class ContentfulApi {
           items {
             title
             sorted
-            description {
-              json
-            }
-            
           }
         }
       }
@@ -188,9 +179,7 @@ export default class ContentfulApi {
         postCollection(where: {type: "Article"}, order: sorted_ASC, locale: "${locale}", limit: ${limit}) {
           items {
             title,
-            description {
-              json
-            }
+            description
             contentfulMetadata {
               tags {
                 id
@@ -219,9 +208,7 @@ export default class ContentfulApi {
           total
           items {
             title
-            description {
-              json
-            }
+            description
             publishDate
             cover {
               title
@@ -279,9 +266,7 @@ export default class ContentfulApi {
               name
             }
           }
-          description {
-            json
-          }
+          description
           publishDate
           cover {
             title

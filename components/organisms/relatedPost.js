@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import PostRelatedCard from '../molecules/postRelatedCard'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const RelatedPost = ({ posts }) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     if(!posts.length)
         return null

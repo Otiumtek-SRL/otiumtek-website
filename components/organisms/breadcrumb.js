@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const Breadcrumb = ({ page, postTitle }) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     const pages = {
         portfolio: { text: t('navbar-portfolio'), link: "/portfolio/page/1" },

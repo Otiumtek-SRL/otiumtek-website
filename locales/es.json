@@ -1,0 +1,32 @@
+{
+    "site": {
+        "chat-message": "Hola! 👋🏼 \n\nque podemos hacer por usted?",
+        "chat-time-replies": "Normalmente responde en un día",
+        "chat-text-button": "Enviar",
+        "navbar-home": "Inicio",
+        "navbar-services": "Servicios",
+        "navbar-portfolio": "Portafolio",
+        "navbar-blog": "Blog",
+        "link-portfolio": "Ir al portafolio",
+        "link-blog": "Ir al blog",
+        "copyright": "Derechos reservados",
+        "related": "Relacionados",
+        "search": "Buscar",
+        "go-to": "Ver",
+        "post-Article": "Articulo",
+        "post-Work": "Proyecto",
+        "month-1": "Ene",
+        "month-2": "Feb",
+        "month-3": "Mar",
+        "month-4": "Abr",
+        "month-5": "May",
+        "month-6": "Jun",
+        "month-7": "Jul",
+        "month-8": "Ag",
+        "month-9": "Sept",
+        "month-10": "Oct",
+        "month-11": "Nov",
+        "month-12": "Dic",
+        "estimate-project": "Estimar proyecto"
+    }
+}

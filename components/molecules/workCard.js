@@ -2,12 +2,11 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import classNames from 'classnames'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const WorkCard = ({title, description, cover, slug, index}) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     return (
         <div className={classNames('flex flex-wrap mb-10', {'md:flex-row-reverse' : index % 2 != 0})}>
@@ -16,7 +15,7 @@ const WorkCard = ({title, description, cover, slug, index}) => {
             </div>
             <div className="w-full md:w-1/2 flex justify-center flex-col items-start px-10">
                 <h3 className="text-lg font-bold uppercase mb-1">{title}</h3>
-                <div>{documentToReactComponents(description.json)}</div> 
+                <div>{description}</div> 
                 <Link href={`/portfolio/${slug}`}>
                     <a className="mb-2 text-primary hover:underline mt-2">{t('go-to')} {title}</a>
                 </Link>

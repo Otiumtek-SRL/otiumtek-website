@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const Footer = ({ infoLandingPage }) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
     const { socialNetworkLinkedin, socialNetworkGithub } = infoLandingPage
 
     return (

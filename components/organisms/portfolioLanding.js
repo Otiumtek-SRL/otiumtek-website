@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 import SectionHeader from '../molecules/sectionHeader'
 import WorkCard from '../molecules/workCard'
 
 const PortolioLanding = ({ title, description, works}) => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     return (
         <div id="solutions" className="pt-20 pb-10 px-5 lg:px-40 flex-col">

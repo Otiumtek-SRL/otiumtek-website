@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import classnames from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/router'
+import Scrollspy from 'react-scrollspy'
 
 const Navbar = ({ isLanding, infoLandingPage }) => {
 
-    const { t } = useTranslation('common')
+    const { locale, locales, push, asPath } = useRouter()
+    const t = useTranslations('site')
     const { contactPhone, contactEmail } = infoLandingPage
     const [isSticky, setIsSticky] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         setIsSticky(window.scrollY == 0 ? false : true)
@@ -38,11 +42,14 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                         {' '}<a href={`tel:${contactPhone}`} className="text-primary hover:underline">{contactPhone}</a>
                     </div>
                     {isLanding ? 
-                        <nav className="flex space-x-4">
-                            <a href="#app" className="hover:text-primary hover:underline text-primary">{t('navbar-home')}</a> 
-                            <a href="#services" className="hover:text-primary hover:underline">{t('navbar-services')}</a>
-                            <a href="#solutions" className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
-                            <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a> 
+                        <nav>
+                            <Scrollspy className="flex space-x-4" items={ ['home', 'services', 'solutions', 'blog'] } currentClassName="text-primary">
+                                <a href="#home" className="hover:text-primary hover:underline">{t('navbar-home')}</a> 
+                                <a href="#services" className="hover:text-primary hover:underline">{t('navbar-services')}</a>
+                                <a href="#solutions" className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
+                                <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
+                                {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
+                            </Scrollspy>
                         </nav> : 
                         <nav className="flex space-x-4">
                             <Link href="/">    
@@ -57,17 +64,45 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                             <Link href="/#blog">
                             <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
                             </Link>
-                            <a href="#estimate-project" className="hover:text-primary hover:underline">{t('estimate-project')}</a> 
+                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
                         </nav>
                     }
                 </div>
-                <div className="md:hidden">
+                <div onClick={() => setIsOpen(!isOpen)} className="md:hidden">
                     <div className="bar1 rounded-full bg-gray-300"></div>
                     <div className="bar2 rounded-full bg-gray-300"></div>
                     <div className="bar3 rounded-full bg-gray-300"></div>
                 </div>
             </div>
-        </div>
+            {isOpen && <div className="px-10 md:px-10 lg:px-40 mt-4 md:hidden">
+                {isLanding ? 
+                    <nav>
+                        <Scrollspy className="flex flex-col" items={ ['home', 'services', 'solutions', 'blog'] } currentClassName="text-primary">
+                            <a href="#home" className="my-1 hover:text-primary hover:underline">{t('navbar-home')}</a> 
+                            <a href="#services" className="my-1 hover:text-primary hover:underline">{t('navbar-services')}</a> 
+                            <a href="#solutions" className="my-1 hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
+                            <a href="#blog" className="my-1 hover:text-primary hover:underline">{t('navbar-blog')}</a>
+                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
+                        </Scrollspy>
+                    </nav> : 
+                    <nav className="flex flex-col">
+                        <Link href="/">
+                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-home')}</a> 
+                        </Link>
+                        <Link href="/#services">
+                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-services')}</a>
+                        </Link>
+                        <Link href="/#solutions">
+                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
+                        </Link>
+                        <Link href="/#blog">
+                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-blog')}</a>
+                        </Link>
+                        {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}
+                    </nav>
+                }
+            </div>}
+        </div> 
     )
 }
 

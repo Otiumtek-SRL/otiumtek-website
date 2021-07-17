@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 const Search = () => {
 
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     return (
         <input type="search" placeholder={t('search')} className="bg-gray-100 w-full p-3 rounded" />

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import DateRibbon from '../molecules/dateRibbon'
 import DateLine from '../atoms/dateLine'
 import Tags from '../atoms/tags'
@@ -18,7 +17,7 @@ const ArticleContent = ({ article }) => {
             <div className="mb-5 rounded border">
                 <Image src={article.cover.url} width={800} height={800} alt={article.cover.title} />
             </div>
-            <div className="text-justify">{documentToReactComponents(article.content ? article.content.json : article.description.json)}</div>
+            <div className="text-justify">{!article.content ? article.description : documentToReactComponents(article.content.json)}</div>
         </div>
     )
 }

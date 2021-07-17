@@ -18,3 +18,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.bar1, .bar2, .bar3 {
+  width: 30px;
+  height: 4px;
+  margin: 6px 0;
+  transition: .2s;
+}

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Tags from '../atoms/tags'
 
 const ArticleCard = ({ title, description, slug, contentfulMetadata: { tags } }) => {
@@ -16,7 +15,7 @@ const ArticleCard = ({ title, description, slug, contentfulMetadata: { tags } })
                         <div className="px-5 py-4">
                             <h3 className="text-lg font-bold">{title}</h3>
                             <div className="text-sm mt-2">
-                                {documentToReactComponents(description.json)}
+                               {description}
                             </div>
                         </div>
                     </a>

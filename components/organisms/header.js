@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 import Button from '../atoms/button'
 
 const Header = ({ slogan, subslogan }) => {
     
-    const { t } = useTranslation('common')
+    const t = useTranslations('site')
 
     return (
         <div id="home" className="flex items-center pt-10 pb-5 sm:pb-5 flex-col">
