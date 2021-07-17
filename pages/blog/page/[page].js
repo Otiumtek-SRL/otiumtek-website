@@ -4,13 +4,14 @@ import ContentfulApi from '../../../utils/ContentfulApi'
 import Config from '../../../utils/Config'
 import Helper from '../../../utils/Helper'
 
-const BlogPage = ({ articles, infoLandingPage, currentPage, totalPage }) => {
+const BlogPage = ({ articles, infoLandingPage, currentPage, totalPage, search }) => {
     return (
         <BlogTemplate
             infoLandingPage={infoLandingPage}
             articles={articles}
             currentPage={currentPage}
             totalPage={totalPage}
+            search={search}
         />
     )
 }
@@ -35,6 +36,10 @@ export async function getStaticProps({ locale, params }) {
     const infoLandingPage = await ContentfulApi.getInfoPage(locale)
     const data = await ContentfulApi.getArticlesPagination(locale, (params.page - 1) * Config.pagination.pageSize, Config.pagination.pageSize)
     let totalPage = Helper.calculatePages(data.total, Config.pagination.pageSize)
+    let search = {
+        en: await ContentfulApi.getPostsForSearch('en'),
+        es: await ContentfulApi.getPostsForSearch('es')
+    }
 
     return {
       props: {
@@ -45,7 +50,8 @@ export async function getStaticProps({ locale, params }) {
         description: "",
         currentPage: parseInt(params.page),
         totalPage,
-        articles: data.items
+        articles: data.items,
+        search
       }
     }
 }

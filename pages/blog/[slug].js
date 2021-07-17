@@ -3,10 +3,14 @@ import LandingLayout from '../../components/layouts/landing'
 import ArticleTemplate from '../../components/templates/articlePost'
 import ContentfulApi from '../../utils/ContentfulApi'
 
-const ArticleDetailPage = ({ article, relatedPosts }) => {
+const ArticleDetailPage = ({ article, relatedPosts, search }) => {
 
     return (
-        <ArticleTemplate article={article} relatedPosts={relatedPosts} />
+        <ArticleTemplate 
+            article={article} 
+            relatedPosts={relatedPosts} 
+            search={search}
+        />
     )
 }
 
@@ -29,6 +33,10 @@ export async function getStaticProps({ locale, params }) {
     const infoLandingPage = await ContentfulApi.getInfoPage(locale)
     const article = await ContentfulApi.getPostBySlug(locale, params.slug)
     const relatedPosts = await ContentfulApi.getPostsRelated('Article', article.contentfulMetadata.tags.map(item => item.id), article.slug)
+    let search = {
+        en: await ContentfulApi.getPostsForSearch('en'),
+        es: await ContentfulApi.getPostsForSearch('es')
+    }
 
     return {
       props: {
@@ -38,7 +46,8 @@ export async function getStaticProps({ locale, params }) {
         isLanding: false,
         infoLandingPage,
         article,
-        relatedPosts
+        relatedPosts,
+        search
       }
     }
 }

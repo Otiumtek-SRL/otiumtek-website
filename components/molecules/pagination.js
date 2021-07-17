@@ -6,8 +6,6 @@ const Pagination = ({ currentPage, totalPage, type }) => {
 
     const t = useTranslations('site')
 
-    console.log(currentPage, totalPage)
-
     if(currentPage == totalPage)
     {
         return null

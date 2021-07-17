@@ -5,7 +5,7 @@ import Pagination from '../molecules/pagination'
 import SectionHeader from '../molecules/sectionHeader'
 import ArticleCard from '../molecules/articleCard'
 
-const BlogTemplate = ({ articles, infoLandingPage, currentPage, totalPage }) => {
+const BlogTemplate = ({ articles, infoLandingPage, currentPage, totalPage, search }) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
@@ -20,7 +20,7 @@ const BlogTemplate = ({ articles, infoLandingPage, currentPage, totalPage }) => 
             </div>
             <div className="content">
                 <div className="mb-10">
-                    <Search />
+                    <Search search={search} />
                 </div>
                 <div className="flex flex-wrap">
                     {articles.map(item => <ArticleCard key={item.slug} {...item} />)}

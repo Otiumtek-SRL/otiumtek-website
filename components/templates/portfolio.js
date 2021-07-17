@@ -5,7 +5,7 @@ import Pagination from '../molecules/pagination'
 import SectionHeader from '../molecules/sectionHeader'
 import WorkCard from '../molecules/workCard'
 
-const PortfolioTemplate = ({ works, infoLandingPage, currentPage, totalPage }) => {
+const PortfolioTemplate = ({ works, infoLandingPage, currentPage, totalPage, search }) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
@@ -20,7 +20,7 @@ const PortfolioTemplate = ({ works, infoLandingPage, currentPage, totalPage }) =
             </div>
             <div className="content">
                 <div className="mb-10">
-                    <Search />
+                    <Search search={search} />
                 </div>
                 <div>
                     {works.map((item, index) => <WorkCard key={item.slug} index={index} {...item} />)}

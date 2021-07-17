@@ -29,7 +29,7 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
     }, [])
 
     return (
-        <div className={classnames('navbar py-3', {'fixed w-full bg-white z-10 border-b': isSticky})}>
+        <div className={classnames('navbar py-3', {'fixed w-full bg-white z-20 border-b': isSticky})}>
             <div className="px-10 md:px-10 lg:px-20 flex items-center justify-between">
                 <Link href="/">
                     <a>

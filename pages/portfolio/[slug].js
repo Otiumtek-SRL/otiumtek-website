@@ -3,10 +3,14 @@ import LandingLayout from '../../components/layouts/landing'
 import WorkTemplate from '../../components/templates/workPost'
 import ContentfulApi from '../../utils/ContentfulApi'
 
-const WorkDetailPage = ({ work, relatedPosts }) => {
+const WorkDetailPage = ({ work, relatedPosts, search }) => {
 
     return (
-        <WorkTemplate work={work} relatedPosts={relatedPosts} />
+        <WorkTemplate
+            work={work}
+            relatedPosts={relatedPosts}
+            search={search}
+        />
     )
 }
 
@@ -29,6 +33,10 @@ export async function getStaticProps({ locale, params }) {
     const infoLandingPage = await ContentfulApi.getInfoPage(locale)
     const work = await ContentfulApi.getPostBySlug(locale, params.slug)
     const relatedPosts = await ContentfulApi.getPostsRelated('Work', work.contentfulMetadata.tags.map(item => item.id), work.slug)
+    let search = {
+        en: await ContentfulApi.getPostsForSearch('en'),
+        es: await ContentfulApi.getPostsForSearch('es')
+    }
 
     return {
       props: {
@@ -38,7 +46,8 @@ export async function getStaticProps({ locale, params }) {
         isLanding: false,
         infoLandingPage,
         work,
-        relatedPosts
+        relatedPosts,
+        search
       }
     }
 }

@@ -277,4 +277,23 @@ export default class ContentfulApi {
     const response = await this.callContentful(query)
     return response.data.postCollection.total
   }
+
+  static async getPostsForSearch(locale) {
+    // Build the query
+    const query = `
+    {
+      postCollection (locale: "${locale}" where: {OR: [{type: "Article"},{type: "Work"}]}){
+         items {
+          title
+          type
+          slug
+        }
+      }
+    }  
+    `
+
+    // Call out to the API
+    const response = await this.callContentful(query)
+    return response.data.postCollection.items
+  }
 }
