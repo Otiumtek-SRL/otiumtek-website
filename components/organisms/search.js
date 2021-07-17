@@ -29,7 +29,7 @@ const Search = ({ search }) => {
         <div className="relative z-10">
             <input type="search" onChange={onHandleSearch} placeholder={t('search')} className="bg-gray-100 w-full p-3 rounded" />
             {dataSearch.length > 0 && <div className="absolute w-full bg-white border rounded mt-1 p-2">
-                {dataSearch.map((item, index) => <div onClick={() => onHandleSelect(item)} className={classnames('py-2 px-5 hover:bg-gray-100 cursor-pointer', {'border-b': index < dataSearch.length - 1})}>{item.title}</div>)}
+                {dataSearch.map((item, index) => <div key={index} onClick={() => onHandleSelect(item)} className={classnames('py-2 px-5 hover:bg-gray-100 cursor-pointer', {'border-b': index < dataSearch.length - 1})}>{item.title}</div>)}
             </div>}
         </div>
     )
