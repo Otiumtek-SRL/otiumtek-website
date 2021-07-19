@@ -243,6 +243,13 @@ export default class ContentfulApi {
           content {
             json
           }
+          link
+          imagesCollection {
+            items {
+              title
+              url
+            }
+          }
         }
       }
     }  

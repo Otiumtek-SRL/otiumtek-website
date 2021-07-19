@@ -107,7 +107,6 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
 }
 
 Navbar.propTypes = {
-    isLanding: PropTypes.any.isRequired,
     infoLandingPage: PropTypes.any.isRequired,
 }
 
