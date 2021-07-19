@@ -58,11 +58,11 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                             <Link href="/#services">
                                 <a className="hover:text-primary hover:underline">{t('navbar-services')}</a>
                             </Link>
-                            <Link href="/#solutions">
-                                <a href="#solutions" className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
+                            <Link href="/portfolio/page/1">
+                                <a className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
                             </Link>
-                            <Link href="/#blog">
-                            <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
+                            <Link href="/blog/page/1">
+                            <a className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
                             </Link>
                             {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </nav>
@@ -92,10 +92,10 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                         <Link href="/#services">
                             <a className="my-1 hover:text-primary hover:underline">{t('navbar-services')}</a>
                         </Link>
-                        <Link href="/#solutions">
+                        <Link href="/portfolio/page/1">
                             <a className="my-1 hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
                         </Link>
-                        <Link href="/#blog">
+                        <Link href="/blog/page/1">
                             <a className="my-1 hover:text-primary hover:underline">{t('navbar-blog')}</a>
                         </Link>
                         {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} width={15} height={15} /></a>)}

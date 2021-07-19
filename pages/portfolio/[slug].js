@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
 import LandingLayout from '../../components/layouts/landing'
 import WorkTemplate from '../../components/templates/workPost'
-import ContentfulApi from '../../utils/ContentfulApi'
+import PortfolioDetailData from '../../domain/PortfolioDetailData'
 
 const WorkDetailPage = ({ work, relatedPosts, search }) => {
 
@@ -15,39 +14,19 @@ const WorkDetailPage = ({ work, relatedPosts, search }) => {
 }
 
 export async function getStaticPaths({ locales }) {
-    let slugs = await ContentfulApi.getSlugs("Work")
-    let paths = []
-    for (let locale of locales) {
-        for(let slug of slugs) {
-            paths = paths.concat([{params: { slug }, locale }])
-        }
-    }
     return {
-        paths,
+        paths: await PortfolioDetailData.getPaths(locales),
         fallback: false
     }
 }
 
 export async function getStaticProps({ locale, params }) {
-
-    const infoLandingPage = await ContentfulApi.getInfoPage(locale)
-    const work = await ContentfulApi.getPostBySlug(locale, params.slug)
-    const relatedPosts = await ContentfulApi.getPostsRelated('Work', work.contentfulMetadata.tags.map(item => item.id), work.slug)
-    let search = {
-        en: await ContentfulApi.getPostsForSearch('en'),
-        es: await ContentfulApi.getPostsForSearch('es')
-    }
-
+    const props = await PortfolioDetailData.getProperties(locale, params)
     return {
       props: {
-        messages: require(`../../locales/${locale}.json`),
-        title: work.title,
-        description: work.description,
-        isLanding: false,
-        infoLandingPage,
-        work,
-        relatedPosts,
-        search
+        title: props.work.title,
+        description: props.work.description,
+        ...props
       }
     }
 }

@@ -8,7 +8,7 @@ const SectionHeader = ({ title, description, button, mode }) => {
     return (
         <div className="text-center">
             <h2 className={classnames('text-2xl mb-5 font-bold', {'text-white' : mode == 'dark'})}>{title}</h2>
-            <div className={classnames('w-full md:w-9/12 m-auto', {'text-white' : mode == 'dark'})}>{documentToReactComponents(description.json)}</div>
+            <div className={classnames('w-full md:w-9/12 m-auto', {'text-white' : mode == 'dark'})}>{description}</div>
             { button && <Button text={button.text} link={button.link} isLink={button.isLink} /> }
         </div>
     )

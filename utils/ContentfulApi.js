@@ -35,17 +35,11 @@ export default class ContentfulApi {
           contactEmail
           contactPhone
           sectionServiceTitle
-          sectionServiceDescription {
-            json
-          }
+          sectionServiceDescription
           sectionPortafolioTitle
-          sectionPortafolioDescription {
-            json
-          }
+          sectionPortafolioDescription
           sectionBlogTitle
-          sectionBlogDescription {
-            json
-          }
+          sectionBlogDescription
           socialNetworkGithub
           socialNetworkLinkedin
         }

@@ -1,6 +1,6 @@
 import LandingLayout from '../components/layouts/landing'
 import LandingTemplate from '../components/templates/landing'
-import ContentfulApi from '../utils/ContentfulApi'
+import LandingData from '../domain/LandingData'
 
 const HomePage = (props) => {
   return (
@@ -9,22 +9,12 @@ const HomePage = (props) => {
 }
 
 export async function getStaticProps({ locale }) {
-  
-  const infoLandingPage = await ContentfulApi.getInfoPage(locale)
-  const services = await ContentfulApi.getServicesLanding(locale)
-  const works = await ContentfulApi.getWorkLanding(locale)
-  const articles = await ContentfulApi.getArticlesLanding(locale)
-  
+  const props = await LandingData.getProperties(locale)
   return {
     props: {
-      messages: require(`../locales/${locale}.json`),
       title: "Otiumtek",
-      description: infoLandingPage.slogan,
-      isLanding: true,
-      infoLandingPage,
-      services,
-      works,
-      articles
+      description: props.infoLandingPage.slogan,
+      ...props
     }
   }
 }

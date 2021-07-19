@@ -15,7 +15,7 @@ const Search = ({ search }) => {
         var text = e.target.value
         console.log(text)
         if(text.length > 0) {
-            setDataSearch(search[locale].filter(item => item.slug.includes(text)).slice(0, 10))
+            setDataSearch(search[locale].filter(item => item.title.toLowerCase().includes(text.toLowerCase())).slice(0, 10))
         } else {
             setDataSearch([])
         }

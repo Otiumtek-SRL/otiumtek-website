@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import LandingLayout from '../../components/layouts/landing'
 import ArticleTemplate from '../../components/templates/articlePost'
-import ContentfulApi from '../../utils/ContentfulApi'
+import BlogDetailData from '../../domain/BlogDetailData'
 
 const ArticleDetailPage = ({ article, relatedPosts, search }) => {
 
@@ -15,39 +15,19 @@ const ArticleDetailPage = ({ article, relatedPosts, search }) => {
 }
 
 export async function getStaticPaths({ locales }) {
-    let slugs = await ContentfulApi.getSlugs("Article")
-    let paths = []
-    for (let locale of locales) {
-        for(let slug of slugs) {
-            paths = paths.concat([{params: { slug }, locale }])
-        }
-    }
     return {
-        paths,
+        paths: await BlogDetailData.getPaths(locales),
         fallback: false
     }
 }
 
 export async function getStaticProps({ locale, params }) {
-
-    const infoLandingPage = await ContentfulApi.getInfoPage(locale)
-    const article = await ContentfulApi.getPostBySlug(locale, params.slug)
-    const relatedPosts = await ContentfulApi.getPostsRelated('Article', article.contentfulMetadata.tags.map(item => item.id), article.slug)
-    let search = {
-        en: await ContentfulApi.getPostsForSearch('en'),
-        es: await ContentfulApi.getPostsForSearch('es')
-    }
-
+    const props = await BlogDetailData.getProperties(locale, params)
     return {
       props: {
-        messages: require(`../../locales/${locale}.json`),
-        title: article.title,
-        description: article.description,
-        isLanding: false,
-        infoLandingPage,
-        article,
-        relatedPosts,
-        search
+        title: props.article.title,
+        description: props.article.description,
+        ...props
       }
     }
 }
