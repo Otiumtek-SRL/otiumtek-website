@@ -1,5 +1,5 @@
-import PortfolioTemplate from '../../../components/templates/portfolio'
 import LandingLayout from '../../../components/layouts/Landing'
+import PortfolioTemplate from '../../../components/templates/Portfolio'
 import PortfolioData from '../../../domain/PortfolioData'
 
 const PortfolioPage = ({ works, infoLandingPage, currentPage, totalPage, search }) => {

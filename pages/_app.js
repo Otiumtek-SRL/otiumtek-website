@@ -16,10 +16,10 @@ function MyApp({ Component, pageProps }) {
       </Layout>) : (
         <Component {...pageProps} />
       )}
-      <div className="fixed bottom-0 right-0">
+      <div className="fixed bottom-0 right-0 z-30">
         <WhatsAppWidget
           companyName="Otiumtek" 
-          phoneNumber={pageProps.infoLandingPage.contactPhone}
+          phoneNumber={pageProps.infoLandingPagepageProps ? pageProps.infoLandingPage.contactPhone : '59895159228'}
         />
       </div>
     </NextIntlProvider>

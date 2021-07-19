@@ -17,7 +17,6 @@ const Layout = ({ children, isLanding, infoLandingPage, ...rest }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   infoLandingPage: PropTypes.any.isRequired,
-  isLanding: PropTypes.any.isRequired,
 }
 
 export default Layout
