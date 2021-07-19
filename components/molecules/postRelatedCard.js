@@ -2,10 +2,9 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import DateLine from '../atoms/dateLine'
+import DateLine from '../atoms/DateLine'
 
 const PostRelatedCard = ({ post }) => {
-
     const t = useTranslations('site')
     const publishDate = post.publishDate ? new Date(post.publishDate) : new Date()
     const link = `/${post.type == 'Article' ? 'blog' : 'portfolio'}/${post.slug}`

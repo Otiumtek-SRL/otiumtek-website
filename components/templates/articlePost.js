@@ -1,27 +1,16 @@
 import PropTypes from 'prop-types'
-import Breadcrumb from '../organisms/breadcrumb'
-import ArticleContent from '../organisms/articleContent'
-import RelatedPost from '../organisms/relatedPost'
-import Search from '../organisms/search'
+import ArticlePostHeader from '../organisms/ArticlePostHeader'
+import ArticlePostContent from '../organisms/ArticlePostContent'
 
-const ArticleDetailTemplate = ({article, relatedPosts, search}) => {
+const ArticleDetailTemplate = ({article, search, relatedPosts}) => {
 
     return (
         <div className="py-10 p-5 md:px-20">
-            <Breadcrumb page="blog" postTitle={article.title} />
-            <div className="md:hidden mb-10">
-                <Search search={search} />
+            <div className="header">
+                <ArticlePostHeader search={search} article={article} />
             </div>
-            <div className="flex flex-wrap">
-                <ArticleContent article={article} />
-                <div className="w-full md:w-1/3 md:pl-5">
-                    <div className="hidden md:block">
-                        <Search search={search}/>
-                    </div>
-                    <div className="mt-8">
-                        <RelatedPost posts={relatedPosts} />
-                    </div>
-                </div>
+            <div className="content">
+                <ArticlePostContent search={search} article={article} relatedPosts={relatedPosts} />
             </div>
         </div>
     ) 
@@ -29,6 +18,7 @@ const ArticleDetailTemplate = ({article, relatedPosts, search}) => {
 
 ArticleDetailTemplate.propTypes = {
     article: PropTypes.object.isRequired,
+    search: PropTypes.object.isRequired,
     relatedPosts: PropTypes.array
 }
 

@@ -1,5 +1,5 @@
-import BlogTemplate from '../../../components/templates/blog'
-import LandingLayout from '../../../components/layouts/landing'
+import LandingLayout from '../../../components/layouts/Landing'
+import BlogTemplate from '../../../components/templates/Blog'
 import BlogData from '../../../domain/BlogData'
 
 const BlogPage = ({ articles, infoLandingPage, currentPage, totalPage, search }) => {

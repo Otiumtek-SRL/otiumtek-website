@@ -1,5 +1,5 @@
-import LandingLayout from '../../components/layouts/landing'
-import WorkTemplate from '../../components/templates/workPost'
+import LandingLayout from '../../components/layouts/Landing'
+import WorkTemplate from '../../components/templates/WorkPost'
 import PortfolioDetailData from '../../domain/PortfolioDetailData'
 
 const WorkDetailPage = ({ work, relatedPosts, search }) => {

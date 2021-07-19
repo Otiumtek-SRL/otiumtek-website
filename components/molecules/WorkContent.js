@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import DateRibbon from '../molecules/dateRibbon'
-import DateLine from '../atoms/dateLine'
+import DateRibbon from '../atoms/DateRibbon'
+import DateLine from '../atoms/DateLine'
 
 const WorkContent = ({ work }) => {
 

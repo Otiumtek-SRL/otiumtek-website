@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import LandingLayout from '../../components/layouts/landing'
-import ArticleTemplate from '../../components/templates/articlePost'
+import LandingLayout from '../../components/layouts/Landing'
+import ArticleTemplate from '../../components/templates/ArticlePost'
 import BlogDetailData from '../../domain/BlogDetailData'
 
 const ArticleDetailPage = ({ article, relatedPosts, search }) => {

@@ -1,5 +1,5 @@
-import LandingLayout from '../components/layouts/landing'
-import LandingTemplate from '../components/templates/landing'
+import LandingLayout from '../components/layouts/Landing'
+import LandingTemplate from '../components/templates/Landing'
 import LandingData from '../domain/LandingData'
 
 const HomePage = (props) => {

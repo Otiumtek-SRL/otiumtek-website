@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Numeric from '../atoms/numeric'
+import Numeric from '../atoms/Numeric'
 
 const ServiceCard = ({title, description, sorted}) => {
     return (
@@ -14,9 +14,9 @@ const ServiceCard = ({title, description, sorted}) => {
 }
 
 ServiceCard.propTypes = {
-    title: PropTypes.any.isRequired,
-    description: PropTypes.any.isRequired,
-    sorted: PropTypes.any.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    sorted: PropTypes.number.isRequired,
 }
 
 export default ServiceCard

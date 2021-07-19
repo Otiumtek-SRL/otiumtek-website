@@ -1,41 +1,31 @@
 import PropTypes from 'prop-types'
-import Breadcrumb from '../organisms/breadcrumb'
-import Search from '../organisms/search'
-import Pagination from '../molecules/pagination'
-import SectionHeader from '../molecules/sectionHeader'
-import WorkCard from '../molecules/workCard'
+import PortfolioHeader from '../organisms/PortfolioHeader'
+import PortfolioContent from '../organisms/PortfolioContent'
 
-const PortfolioTemplate = ({ works, infoLandingPage, currentPage, totalPage, search }) => {
-
+const PortfolioTemplate = ({ infoLandingPage, search, works, currentPage, totalPage }) => {
     return (
         <div className="py-10 p-5 md:px-20">
             <div className="header">
-                <Breadcrumb page="portfolio" />
-                <div className="mb-10">
-                    <SectionHeader 
-                        title={infoLandingPage.sectionPortafolioTitle}
-                        description={infoLandingPage.sectionPortafolioDescription}
-                    />
-                </div>
+                <PortfolioHeader infoLandingPage={infoLandingPage} />
             </div>
             <div className="content">
-                <div className="mb-10">
-                    <Search search={search} />
-                </div>
-                <div>
-                    {works.map((item, index) => <WorkCard key={item.slug} index={index} {...item} />)}
-                </div>
-            </div>  
-            <div className="pagination">
-                <Pagination currentPage={currentPage} totalPage={totalPage} type="portfolio" />
+                <PortfolioContent 
+                    search={search} 
+                    works={works} 
+                    currentPage={currentPage} 
+                    totalPage={totalPage} 
+                />
             </div>
         </div>
     )
 }
 
 PortfolioTemplate.propTypes = {
-    works: PropTypes.array.isRequired,
     infoLandingPage: PropTypes.object.isRequired,
+    search: PropTypes.object.isRequired,
+    works: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalPage: PropTypes.number.isRequired,
 }
 
 export default PortfolioTemplate

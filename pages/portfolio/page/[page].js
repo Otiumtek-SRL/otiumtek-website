@@ -1,5 +1,5 @@
 import PortfolioTemplate from '../../../components/templates/portfolio'
-import LandingLayout from '../../../components/layouts/landing'
+import LandingLayout from '../../../components/layouts/Landing'
 import PortfolioData from '../../../domain/PortfolioData'
 
 const PortfolioPage = ({ works, infoLandingPage, currentPage, totalPage, search }) => {
@@ -23,11 +23,7 @@ export async function getStaticPaths({ locales }) {
 
 export async function getStaticProps({ locale, params }) {
     const props = await PortfolioData.getProperties(locale, params)
-    console.log({
-        title: props.infoLandingPage.sectionPortafolioTitle,
-        description: props.infoLandingPage.sectionPortafolioDescription,
-        ...props
-      })
+
     return {
       props: {
         title: props.infoLandingPage.sectionPortafolioTitle,

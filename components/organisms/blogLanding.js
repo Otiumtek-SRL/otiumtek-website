@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useTranslations } from 'next-intl'
-import SectionHeader from '../molecules/sectionHeader'
-import ArticleCard from '../molecules/articleCard'
+import SectionHeader from '../molecules/SectionHeader'
+import ArticleCard from '../molecules/ArticleCard'
 
 const BlogLanding = ({ title, description, articles}) => {
 

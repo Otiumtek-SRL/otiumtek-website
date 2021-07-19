@@ -1,8 +1,8 @@
 import {NextIntlProvider} from 'next-intl'
 import WhatsAppWidget from 'react-whatsapp-widget'
+import Head from '../components/atoms/Head'
 import '../styles/globals.css'
 import 'react-whatsapp-widget/dist/index.css'
-import Head from '../components/atoms/head'
 
 function MyApp({ Component, pageProps }) {
   
@@ -17,12 +17,9 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       )}
       <div className="fixed bottom-0 right-0">
-        <WhatsAppWidget 
-          // textReplyTime={pageProps.messages['site']['chat-time-replies']} 
-          // message={pageProps.messages['site']['chat-message']}
-          // sendButton={pageProps.messages['site']['chat-text-button']}
+        <WhatsAppWidget
           companyName="Otiumtek" 
-          phoneNumber='59895159228' 
+          phoneNumber={pageProps.infoLandingPage.contactPhone}
         />
       </div>
     </NextIntlProvider>

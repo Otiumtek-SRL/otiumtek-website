@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-import Header from '../organisms/header'
-import Service from '../organisms/serviceLanding'
-import Portfolio from '../organisms/portfolioLanding'
-import Blog from '../organisms/blogLanding'
+import Header from '../organisms/HeaderLanding'
+import Service from '../organisms/ServiceLanding'
+import Portfolio from '../organisms/PortfolioLanding'
+import Blog from '../organisms/BlogLanding'
 
 const LandingTemplate = ({ infoLandingPage, services, works, articles }) => {
 

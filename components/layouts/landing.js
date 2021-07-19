@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Navbar from '../organisms/navbar'
-import Footer from '../organisms/footer'
+import Navbar from '../organisms/Navbar'
+import Footer from '../organisms/Footer'
 
 const Layout = ({ children, isLanding, infoLandingPage, ...rest }) => {
 

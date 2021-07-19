@@ -41,8 +41,7 @@ const Breadcrumb = ({ page, postTitle }) => {
 }
 
 Breadcrumb.propTypes = {
-    //postTitle: PropTypes.any.isRequired,
-    page: PropTypes.any.isRequired,
+    page: PropTypes.string.isRequired,
 }
 
 export default Breadcrumb

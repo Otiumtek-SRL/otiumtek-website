@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Tags from '../atoms/tags'
+import Tags from '../atoms/Tags'
 
 const ArticleCard = ({ title, description, slug, contentfulMetadata: { tags } }) => {
     
@@ -30,9 +30,9 @@ const ArticleCard = ({ title, description, slug, contentfulMetadata: { tags } })
 }
 
 ArticleCard.propTypes = {
-    title: PropTypes.any.isRequired,
-    description: PropTypes.any.isRequired,
-    slug: PropTypes.any.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
 }
 
 ArticleCard.defaultProps = {

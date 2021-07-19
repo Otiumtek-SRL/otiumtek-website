@@ -7,9 +7,7 @@ const Pagination = ({ currentPage, totalPage, type }) => {
     const t = useTranslations('site')
 
     if(currentPage == totalPage)
-    {
         return null
-    }
 
     return (
         <div className="flex justify-center">
@@ -24,9 +22,9 @@ const Pagination = ({ currentPage, totalPage, type }) => {
 }
 
 Pagination.propTypes = {
-    currentPage: PropTypes.any.isRequired,
-    totalPage: PropTypes.any.isRequired,
-    type: PropTypes.any.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalPage: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
 }
 
 export default Pagination

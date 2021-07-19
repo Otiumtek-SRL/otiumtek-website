@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import PostRelatedCard from '../molecules/postRelatedCard'
+import PostRelatedCard from './PostRelatedCard'
 import { useTranslations } from 'next-intl'
 
 const RelatedPost = ({ posts }) => {

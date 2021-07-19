@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import SectionHeader from '../molecules/sectionHeader'
-import ServiceCard from '../molecules/serviceCard'
+import SectionHeader from '../molecules/SectionHeader'
+import ServiceCard from '../molecules/ServiceCard'
 
 const ServiceLanding = ({ title, description, services}) => {
 

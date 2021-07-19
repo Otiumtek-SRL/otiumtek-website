@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useTranslations } from 'next-intl'
-import SectionHeader from '../molecules/sectionHeader'
-import WorkCard from '../molecules/workCard'
+import SectionHeader from '../molecules/SectionHeader'
+import WorkCard from '../molecules/WorkCard'
 
 const PortolioLanding = ({ title, description, works}) => {
 
