@@ -15,8 +15,8 @@ const ListTech = () => {
     return (
         <>
             <div className="mt-8 flex space-y-2 w-full pb-5 justify-center flex-wrap">
-                {tech.map((item, index) => <div className="w-3/12 md:w-1/12 flex justify-center" data-background-color="#DD0837" type="dark" data-tip={item.name}>
-                    <IconDev key={index} name={item.icon} />
+                {tech.map((item, index) => <div  key={index} className="w-3/12 md:w-1/12 flex justify-center" data-background-color="#DD0837" type="dark" data-tip={item.name}>
+                    <IconDev name={item.icon} />
                 </div>)}
             </div>
             <ReactTooltip/>
