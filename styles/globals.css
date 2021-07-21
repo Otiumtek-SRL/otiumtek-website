@@ -25,3 +25,7 @@ a {
   margin: 6px 0;
   transition: .2s;
 }
+
+.next-image > div {
+  position: unset !important;
+}

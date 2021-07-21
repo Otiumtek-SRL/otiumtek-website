@@ -12,8 +12,8 @@ const WorkCard = ({title, description, cover, slug, index}) => {
 
     return (
         <div className={classNames('flex flex-wrap mb-10', {'md:flex-row-reverse' : index % 2 != 0})}>
-            <div className="w-full md:w-1/2 mb-5 border rounded relative">
-                {cover && <Image className="w-full" src={cover.url} width={800} height={650} alt={cover.title} />}
+            <div className="w-full md:w-1/2 mb-5 border rounded relative next-image" style={{height: '30rem'}}>
+                {cover && <Image className="w-full" src={cover.url} height={300} width={300} alt={cover.title} />}
             </div>
             <div className="w-full md:w-1/2 flex justify-center flex-col items-start px-10">
                 <h3 className="text-lg font-bold uppercase mb-1">{title}</h3>
