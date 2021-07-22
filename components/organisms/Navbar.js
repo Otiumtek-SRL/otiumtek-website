@@ -52,14 +52,14 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                     {isLanding ? 
                         <nav>
                             <Scrollspy className="flex space-x-4" items={items.map(item => item.section)} currentClassName="text-primary">
-                                {items.map(item => <a href={item.hrefLanding} className="hover:text-primary hover:underline">{item.name}</a>)}
+                                {items.map((item, index) => <a key={index} href={item.hrefLanding} className="hover:text-primary hover:underline">{item.name}</a>)}
                                 {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center">
                                     <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)
                                 }
                             </Scrollspy>
                         </nav> : 
                         <nav className="flex space-x-4">
-                            {items.map(item => <Link href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
+                            {items.map((item, index) => <Link key={index} href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
                             {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </nav>
                     }
@@ -74,13 +74,13 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                 {isLanding ? 
                     <nav>
                         <Scrollspy className="flex flex-col" items={ ['home', 'services', 'solutions', 'blog'] } currentClassName="text-primary">
-                            {items.map(item => <a href={item.hrefLanding} className="my-1 hover:text-primary hover:underline">{item.name}</a>)}
+                            {items.map((item, index) => <a key={index} href={item.hrefLanding} className="my-1 hover:text-primary hover:underline">{item.name}</a>)}
                             {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center">
                                 <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </Scrollspy>
                     </nav> : 
                     <nav className="flex flex-col">
-                        {items.map(item => <Link href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
+                        {items.map((item, index) => <Link key={index} href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
                         {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center">
                             <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                     </nav>
