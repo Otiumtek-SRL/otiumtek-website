@@ -15,8 +15,7 @@ const BlogLanding = ({ title, description, articles}) => {
                 mode="dark"
                 button={{
                     text: t('link-blog'),
-                    link: '/blog/page/1',
-                    isLink: true
+                    link: '/blog/page/1'
                 }}
             />
             <div className="flex flex-wrap mt-10">

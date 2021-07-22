@@ -1,33 +1,33 @@
 import PropTypes from 'prop-types'
 import { useTranslations } from 'next-intl'
 import SectionHeader from '../molecules/SectionHeader'
-import WorkCard from '../molecules/WorkCard'
+import TeamCard from '../molecules/TeamCard'
 
-const PortolioLanding = ({ title, description, works}) => {
+const TeamLanding = ({ title, description, members}) => {
 
     const t = useTranslations('site')
 
     return (
-        <div id="solutions" className="pt-20 pb-10 px-5 lg:px-40 flex-col">
+        <div id="team" className="pt-20 pb-10 px-5 lg:px-40 flex-col">
             <SectionHeader 
                 title={title}
                 description={description} 
-                button={{
-                    text: t('link-portfolio'),
-                    link: '/portfolio/page/1'
-                }} 
+                // button={{
+                //     text: t('link-member'),
+                //     link: '/team'
+                // }} 
             />
             <div>
-                {works.map((item, index) => <WorkCard key={item.slug} index={index} {...item} />)}
+                {members.map((item, index) => <TeamCard key={item.slug} index={index} {...item} />)}
             </div>
         </div>
     )
 }
 
-PortolioLanding.propTypes = {
+TeamLanding.propTypes = {
     title: PropTypes.any.isRequired,
     description: PropTypes.any.isRequired,
     works: PropTypes.array.isRequired,
 }
   
-export default PortolioLanding
+export default TeamLanding

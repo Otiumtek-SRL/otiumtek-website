@@ -8,12 +8,20 @@ import { useRouter } from 'next/router'
 import Scrollspy from 'react-scrollspy'
 
 const Navbar = ({ isLanding, infoLandingPage }) => {
-
-    const { locale, locales, push, asPath } = useRouter()
+    console.log(useRouter())
+    const { locale, locales, push, asPath, pathname } = useRouter()
     const t = useTranslations('site')
     const { contactPhone, contactEmail } = infoLandingPage
     const [isSticky, setIsSticky] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
+
+    const items = [
+        {name: t('navbar-home'), hrefLanding: "#home", href: "/", section: 'home', pathNames: []},
+        {name: t('navbar-services'), hrefLanding: "#services", href: "/#services", section: 'services', pathNames: []},
+        {name: t('navbar-portfolio'), hrefLanding: "#solutions", href: "/portfolio/page/1", section: 'solutions', pathNames: ['/portfolio/page/[page]', '/portfolio/[slug]']},
+        {name: t('navbar-blog'), hrefLanding: "#blog", href:"/blog/page/1", section: 'blog', pathNames: ['/blog/page/[page]', '/blog/[slug]']},
+        {name: t('navbar-team'), hrefLanding: "#team", href: "/#team", section: 'team', pathNames: ['/team/[slug]']},
+    ]
 
     useEffect(() => {
         setIsSticky(window.scrollY == 0 ? false : true)
@@ -43,27 +51,15 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                     </div>
                     {isLanding ? 
                         <nav>
-                            <Scrollspy className="flex space-x-4" items={ ['home', 'services', 'solutions', 'blog'] } currentClassName="text-primary">
-                                <a href="#home" className="hover:text-primary hover:underline">{t('navbar-home')}</a> 
-                                <a href="#services" className="hover:text-primary hover:underline">{t('navbar-services')}</a>
-                                <a href="#solutions" className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
-                                <a href="#blog" className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
-                                {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
+                            <Scrollspy className="flex space-x-4" items={items.map(item => item.section)} currentClassName="text-primary">
+                                {items.map(item => <a href={item.hrefLanding} className="hover:text-primary hover:underline">{item.name}</a>)}
+                                {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center">
+                                    <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)
+                                }
                             </Scrollspy>
                         </nav> : 
                         <nav className="flex space-x-4">
-                            <Link href="/">    
-                                <a className="hover:text-primary hover:underline text-primary">{t('navbar-home')}</a> 
-                            </Link>
-                            <Link href="/#services">
-                                <a className="hover:text-primary hover:underline">{t('navbar-services')}</a>
-                            </Link>
-                            <Link href="/portfolio/page/1">
-                                <a className="hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
-                            </Link>
-                            <Link href="/blog/page/1">
-                            <a className="hover:text-primary hover:underline">{t('navbar-blog')}</a>
-                            </Link>
+                            {items.map(item => <Link href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
                             {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </nav>
                     }
@@ -78,27 +74,15 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
                 {isLanding ? 
                     <nav>
                         <Scrollspy className="flex flex-col" items={ ['home', 'services', 'solutions', 'blog'] } currentClassName="text-primary">
-                            <a href="#home" className="my-1 hover:text-primary hover:underline">{t('navbar-home')}</a> 
-                            <a href="#services" className="my-1 hover:text-primary hover:underline">{t('navbar-services')}</a> 
-                            <a href="#solutions" className="my-1 hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
-                            <a href="#blog" className="my-1 hover:text-primary hover:underline">{t('navbar-blog')}</a>
-                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
+                            {items.map(item => <a href={item.hrefLanding} className="my-1 hover:text-primary hover:underline">{item.name}</a>)}
+                            {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center">
+                                <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                         </Scrollspy>
                     </nav> : 
                     <nav className="flex flex-col">
-                        <Link href="/">
-                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-home')}</a> 
-                        </Link>
-                        <Link href="/#services">
-                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-services')}</a>
-                        </Link>
-                        <Link href="/portfolio/page/1">
-                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-portfolio')}</a>
-                        </Link>
-                        <Link href="/blog/page/1">
-                            <a className="my-1 hover:text-primary hover:underline">{t('navbar-blog')}</a>
-                        </Link>
-                        {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center"><Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
+                        {items.map(item => <Link href={item.href}><a className={classnames('"hover:text-primary hover:underline', {'text-primary': item.pathNames.includes(pathname)})}>{item.name}</a></Link>)}
+                        {locales.filter(item => item != locale).map(item => <a key={item} onClick={() => push(asPath, asPath, { locale: item })} className="my-1 hover:text-primary hover:underline cursor-pointer flex items-center">
+                            <Image src={`/images/${item}.png`} alt={`Language ${item}`} width={15} height={15} /></a>)}
                     </nav>
                 }
             </div>}

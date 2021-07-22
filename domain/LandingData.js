@@ -10,6 +10,7 @@ export default class LandingData {
             services: await ContentfulApi.getServicesLanding(locale),
             works: await ContentfulApi.getWorkLanding(locale),
             articles: await ContentfulApi.getArticlesLanding(locale),
+            members: await ContentfulApi.getMembersLanding(locale),
             ...MessageData.getProperties(locale)
         }
     }

@@ -3,14 +3,16 @@ import Header from '../organisms/HeaderLanding'
 import Service from '../organisms/ServiceLanding'
 import Portfolio from '../organisms/PortfolioLanding'
 import Blog from '../organisms/BlogLanding'
+import Team from '../organisms/TeamLanding'
 
-const LandingTemplate = ({ infoLandingPage, services, works, articles }) => {
+const LandingTemplate = ({ infoLandingPage, services, works, articles, members }) => {
 
     const { 
         slogan, subslogan, 
         sectionServiceTitle, sectionServiceDescription,
         sectionPortafolioTitle, sectionPortafolioDescription,
-        sectionBlogTitle, sectionBlogDescription
+        sectionBlogTitle, sectionBlogDescription,
+        sectionTeamTitle, sectionTeamDescription
     } = infoLandingPage
 
     return (
@@ -34,13 +36,21 @@ const LandingTemplate = ({ infoLandingPage, services, works, articles }) => {
                 description={sectionBlogDescription}
                 articles={articles}
             />
+            <Team 
+                title={sectionTeamTitle} 
+                description={sectionTeamDescription}
+                members={members} 
+            />
         </div>
     )
 }
 
 LandingTemplate.propTypes = {
-  infoLandingPage: PropTypes.object.isRequired,
-  services: PropTypes.array.isRequired,
+    infoLandingPage: PropTypes.object.isRequired,
+    services: PropTypes.array.isRequired,
+    works: PropTypes.array.isRequired,
+    articles: PropTypes.array.isRequired,
+    members: PropTypes.array.isRequired
 }
 
 export default LandingTemplate

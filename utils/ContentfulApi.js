@@ -40,6 +40,8 @@ export default class ContentfulApi {
           sectionPortafolioDescription
           sectionBlogTitle
           sectionBlogDescription
+          sectionTeamTitle
+          sectionTeamDescription
           socialNetworkGithub
           socialNetworkLinkedin
         }
@@ -194,6 +196,35 @@ export default class ContentfulApi {
     // Call out to the API
     const response = await this.callContentful(query)
     return response.data.postCollection
+  }
+
+  static async getMembersLanding(locale, limit = 4) {
+    // Build the query
+    const query = `
+      {
+        postCollection(where: {type: "Team"}, locale: "${locale}", limit: ${limit}, order: sorted_DESC) {
+          items {
+            title
+            description
+            cover {
+              url
+              title
+            }
+            contentfulMetadata {
+              tags {
+                id
+                name
+              }
+            }
+            slug
+          }
+        }
+      }
+    `
+
+    // Call out to the API
+    const response = await this.callContentful(query)
+    return response.data.postCollection.items
   }
 
   static async getPostsRelated(type, tags, slugNoInclude) {
