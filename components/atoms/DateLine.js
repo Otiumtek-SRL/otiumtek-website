@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const DateLine = ({ date }) => {
 
     return (
-        <span>{date.toLocaleDateString()}</span>
+        <span>{date && new Date(date).toLocaleDateString()}</span>
     )
 }
 

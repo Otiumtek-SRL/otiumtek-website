@@ -4,6 +4,7 @@ import ArticleCard from '../molecules/ArticleCard'
 import Pagination from '../molecules/Pagination'
 
 const BlogContent = ({ search, articles, currentPage, totalPage }) => {
+    console.log(articles)
     return (
         <>
             <div className="mb-10">

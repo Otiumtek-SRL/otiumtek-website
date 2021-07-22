@@ -29,3 +29,11 @@ a {
 .next-image > div {
   position: unset !important;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+  margin: 10px 0;
+}

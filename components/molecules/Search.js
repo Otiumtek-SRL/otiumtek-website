@@ -22,6 +22,7 @@ const Search = ({ search }) => {
 
     const onHandleSelect = (item) => {
         const path = `/${Mapper[`route-${item.type}`]}/${item.slug}`
+        setDataSearch([])
         push(path, path, {locale})
     }
 
