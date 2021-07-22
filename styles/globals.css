@@ -34,11 +34,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+.content blockquote, .content dl, 
+.content dd, .content h1, 
+.content h2, .content h3, 
+.content h4, .content h5, 
+.content h6, .content hr,
+.content figure,
+.content p, 
+.content pre {
   margin: 10px 0;
 }
 
-ol, ul {
+.content ol, .content ul {
   margin: 0;
   padding: 0 20px;
   list-style: disc;

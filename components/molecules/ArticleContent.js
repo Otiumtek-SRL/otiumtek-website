@@ -18,7 +18,7 @@ const ArticleContent = ({ article }) => {
             <div className="mb-5 rounded border mt-4">
                 {article.cover && <Image src={article.cover.url} width={800} height={800} alt={article.cover.title} />}
             </div>
-            <div className="text-justify">{!article.content ? article.description : documentToReactComponents(article.content.json)}</div>
+            <div className="text-justify content">{!article.content ? article.description : documentToReactComponents(article.content.json)}</div>
         </div>
     )
 }

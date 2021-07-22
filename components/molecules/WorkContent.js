@@ -20,7 +20,7 @@ const WorkContent = ({ work }) => {
             <div className="mb-5 rounded border relative next-image" style={{height: '50rem'}}>
                 <Image src={work.cover.url} height={1000} width={1000} alt={work.cover.title} />
             </div>
-            <div className="text-justify mb-8">{work.content ? documentToReactComponents(work.content.json) : work.description}</div>
+            <div className="text-justify content mb-8">{work.content ? documentToReactComponents(work.content.json) : work.description}</div>
             {work.imagesCollection && <SRLWrapper><div className="grid gap-2" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
                     {work.imagesCollection.items.map((item, index) => (
                         <a key={index} href={item.url} className="border rounded w-full relative block">
