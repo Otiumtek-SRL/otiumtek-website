@@ -2,12 +2,13 @@ import LandingLayout from '../../components/layouts/Landing'
 import MemberTemplate from '../../components/templates/MemberPost'
 import TeamDetailData from '../../domain/TeamDetailData'
 
-const TeamDetailPage = ({ member, search }) => {
+const TeamDetailPage = ({ member, search, relatedPosts }) => {
 
     return (
         <MemberTemplate
             member={member}
             search={search}
+            relatedPosts={relatedPosts}
         />
     )
 }

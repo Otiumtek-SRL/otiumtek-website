@@ -227,11 +227,11 @@ export default class ContentfulApi {
     return response.data.postCollection.items
   }
 
-  static async getPostsRelated(type, tags, slugNoInclude) {
+  static async getPostsRelated(types, tags, slugNoInclude) {
     // Build the query
     const query = `
     {
-      postCollection (where: {type: "${type}", slug_not: "${slugNoInclude}" contentfulMetadata: {tags: {id_contains_some: ${JSON.stringify(tags)}}}}){
+      postCollection (where: {type_in: ${JSON.stringify(types)}, slug_not: "${slugNoInclude}" contentfulMetadata: {tags: {id_contains_some: ${JSON.stringify(tags)}}}} limit: 6){
         items {
           cover{
             url

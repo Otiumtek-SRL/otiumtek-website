@@ -15,7 +15,7 @@ export default class PortfolioData {
                 paths = paths.concat([{params: { page: `${i + 1}` }, locale }])
             }
         }
-        return paths;
+        return paths
     }
 
     static async getProperties(locale, params) {

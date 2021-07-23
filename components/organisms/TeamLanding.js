@@ -11,7 +11,7 @@ const TeamLanding = ({ title, description, members}) => {
         <div id="team" className="pt-20 pb-10 px-5 lg:px-40 flex-col">
             <SectionHeader 
                 title={title}
-                description={description} 
+                description={description}
                 // button={{
                 //     text: t('link-member'),
                 //     link: '/team'
@@ -27,7 +27,7 @@ const TeamLanding = ({ title, description, members}) => {
 TeamLanding.propTypes = {
     title: PropTypes.any.isRequired,
     description: PropTypes.any.isRequired,
-    works: PropTypes.array.isRequired,
+    members: PropTypes.array.isRequired,
 }
   
 export default TeamLanding

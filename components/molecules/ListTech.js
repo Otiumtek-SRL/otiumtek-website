@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import IconDev from '../atoms/IconDev'
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'
 
 const ListTech = () => {
     const tech = [

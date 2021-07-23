@@ -5,7 +5,7 @@ import Search from '../molecules/Search'
 const MemberPostHeader = ({ member, search }) => {
     return (
         <>
-            <Breadcrumb page="portfolio"  postTitle={member.title} />
+            <Breadcrumb  postTitle={member.title} />
             <div className="md:hidden mb-10">
                 <Search search={search} />
             </div>

@@ -12,7 +12,7 @@ export default class BlogDetailData {
                 paths = paths.concat([{params: { slug }, locale }])
             }
         }
-        return paths;
+        return paths
     }
 
     static async getProperties(locale, params) {
@@ -21,7 +21,7 @@ export default class BlogDetailData {
         return {
             infoLandingPage: await ContentfulApi.getInfoPage(locale),
             article,
-            relatedPosts: await ContentfulApi.getPostsRelated('Article', article.contentfulMetadata.tags.map(item => item.id), article.slug),
+            relatedPosts: await ContentfulApi.getPostsRelated(['Article'], article.contentfulMetadata.tags.map(item => item.id), article.slug),
             ...MessageData.getProperties(locale),
             ...await SearchData.getProperties()
         }

@@ -21,7 +21,7 @@ export default class PortfolioDetailData {
         return {
             infoLandingPage: await ContentfulApi.getInfoPage(locale),
             work,
-            relatedPosts: await ContentfulApi.getPostsRelated('Work', work.contentfulMetadata.tags.map(item => item.id), work.slug),
+            relatedPosts: await ContentfulApi.getPostsRelated(['Work'], work.contentfulMetadata.tags.map(item => item.id), work.slug),
             ...MessageData.getProperties(locale),
             ...await SearchData.getProperties()
         }

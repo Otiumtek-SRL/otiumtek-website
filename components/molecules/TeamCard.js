@@ -18,7 +18,7 @@ const TeamCard = ({title, description, cover, slug, index}) => {
             </div>
             <div className="w-full md:w-1/2 flex justify-center flex-col items-start px-10">
                 <h3 className="text-lg font-bold uppercase mb-1">{name}</h3>
-                <h4 className="text-md font-bold uppercase mb-1">{position}</h4>
+                <h4 className="text-sm font-bold uppercase mb-1">{position}</h4>
                 <div>{description}</div> 
                 <Link href={`/team/${slug}`} locale={locale}>
                     <a className="mb-2 text-primary hover:underline mt-2">{t('view-profile')}</a>

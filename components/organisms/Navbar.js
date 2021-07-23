@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 import Scrollspy from 'react-scrollspy'
 
 const Navbar = ({ isLanding, infoLandingPage }) => {
-    console.log(useRouter())
     const { locale, locales, push, asPath, pathname } = useRouter()
     const t = useTranslations('site')
     const { contactPhone, contactEmail } = infoLandingPage
@@ -32,7 +31,7 @@ const Navbar = ({ isLanding, infoLandingPage }) => {
             } else {
                 setIsSticky(false)
             }
-        });
+        })
         return () => {}
     }, [])
 
